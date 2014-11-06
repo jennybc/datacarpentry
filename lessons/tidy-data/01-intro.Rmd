@@ -55,7 +55,10 @@ lotr_dat <-
                     expand.grid(Film = levels(Film), Race = levels(Race),
                                 Gender = levels(Gender))))
 lotr_tidy <- left_join(all_combns, lotr_tidy)
-## 2014-11-04 working around a dplyr join bug re factor levels
+## 2014-11-04 working around a dplyr join bug re preserving factor levels
+## 2014-11-06 it's fixed now but no rush to remove this, since I don't want 
+## lesson to depend on bleeding edge version of dplyr; remove later, such as
+## after dplyr goes to version
 lotr_tidy <- lotr_tidy %>%
   mutate(Film = factor(Film, levels = c("The Fellowship Of The Ring",
                                         "The Two Towers",
